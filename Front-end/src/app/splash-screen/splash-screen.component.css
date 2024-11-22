@@ -1,0 +1,95 @@
+.splash-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.splash-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/images/background.webp'); 
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px); 
+  z-index: -1; 
+  transform: scale(1.1); 
+}
+.animated-text {
+  font-size: 64px;
+  margin-bottom: 30px;
+  font-family: "Cairo", sans-serif;
+  padding-block: 20px;
+}
+
+.button-container {
+  gap: 20px;
+  border: none;
+  margin-bottom: 30px;  /* Space for the track */
+}
+
+button.btn {
+  padding: 20px 40px;
+  font-size: 24px;
+  border-radius: 8px;
+  transition: 1s 0s all;
+}
+
+.btn-primary, .btn-secondary {
+  transition: 1s 0s all;
+  border: none;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #003a77;
+}
+
+/* Track Animation */
+.track-container {
+  position: relative;
+  width: 100%;
+  height: 100px;  /* Adjust height to fit the track image */
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Car class using track.png */
+.car {
+  width: 200px;  /* Adjust width to fit the track image */
+  height: 130px;  /* Adjust height to match the image height */
+  background-image: url('/assets/images/track.png');  /* Set track image */
+  background-size: contain;  /* Ensure the image scales correctly */
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: -200px;  /* Start offscreen */
+  animation: drive 10s ease-in-out infinite;  /* Animation moves and reverses smoothly */
+  animation-delay: 0.5s; /* Delay before the animation starts */
+}
+
+/* Car driving animation */
+@keyframes drive {
+  0% {
+    left: -200px;  /* Start offscreen from the left */
+    transform: scaleX(1);  /* Normal orientation */
+  }
+  50% {
+    left: 100vw;  /* Reach the end of the screen */
+    transform: scaleX(1);  /* Still facing the original direction */
+  }
+  51% {
+    transform: scaleX(-1);  /* Flip the image horizontally */
+  }
+  100% {
+    left: -200px;  /* Move back to the left and exit screen */
+    transform: scaleX(-1);  /* Image remains flipped on the return */
+  }
+}

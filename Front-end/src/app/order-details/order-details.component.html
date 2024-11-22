@@ -1,0 +1,58 @@
+<div class="navcontainer">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark custom_container m-auto">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Package-tracker</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto custom_ul">
+          <li class="nav-item ">
+            <a class="btn btn-secondary mx-3" aria-current="page" routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="btn btn-secondary mx-3" routerLink="/order-page">Order Page</a>
+          </li>
+          <li class="nav-item ">
+            <a class="btn btn-secondary mx-3" routerLink="/my-orders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger mx-3" (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+</div>
+
+<div class="custom-container d-flex justify-content-center align-items-center">
+  <div class="custom-card bg-light m-auto p-4">
+    <h2 class="title fw-bold text-center">Order Details</h2>
+
+    <div *ngIf="orderDetails">
+      <p><strong>Order ID:</strong> {{ orderDetails.id }}</p>
+      <p><strong>Seller ID:</strong> {{ orderDetails.seller_id }}</p>
+      <p *ngIf="orderDetails.courier_id != null"><strong>Courier ID: </strong> {{ orderDetails.courier_id }}</p>
+      <p *ngIf="orderDetails.courier_id == null"><strong>Courier ID: </strong>Not Assigned</p>
+
+      <p><strong>Pickup Location:</strong> {{ orderDetails.pickup_location }}</p>
+      <p><strong>Drop-Off Location:</strong> {{ orderDetails.dropoff_location }}</p>
+      <p><strong>Delivery Time:</strong> {{ orderDetails.delivery_time }}</p>
+      <p><strong>Status: </strong>
+        <span *ngIf="orderDetails.status == 'pending'" class="badge bg-warning text-dark p-2 custom-badge">{{ orderDetails.status }}</span>
+        <span *ngIf="orderDetails.status == 'delivered'" class="badge bg-success p-2 custom-badge">{{ orderDetails.status }}</span>
+        <span *ngIf="orderDetails.status != 'pending' && orderDetails.status != 'delivered'" class="badge bg-info text-dark p-2 custom-badge">{{ orderDetails.status }}</span>
+      </p>
+
+      <h3 class="mt-4">Items</h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of orderDetails.items">
+          <strong>{{ item.name }}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="navcontainer">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark custom_container m-auto">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home-courier">Package-tracker</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto custom_ul">
+          <li class="nav-item ">
+            <a class="btn btn-secondary mx-3" aria-current="page" routerLink="/home-courier">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="btn btn-secondary mx-3" routerLink="/assigned-orders">Assigned Orders</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger mx-3" (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+</div>
+
+<div class="d-flex justify-content-center align-items-center custom-container ">
+  <div class="custom-card bg-light m-auto p-4 ">
+    <h2 class="title fw-bold text-center">Assigned Orders</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="orders.length == 0" class="alert alert-info text-center">
+      No orders assigned
+    </div>
+    <table class="table mt-4 ">
+      <thead>
+      <tr>
+        <th class="text-center">Order ID</th>
+        <th class="text-center">Seller ID</th>
+        <th class="text-center">Pickup Location</th>
+        <th class="text-center">Drop off Location</th>
+        <th class="text-center "># of Items</th>
+        <th class="text-center ">Status</th>
+        <th class="text-center ms-2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders" class="align-middle">
+        <td class="text-center">{{ order.id }}</td>
+        <td class="text-center">{{ order.seller_id }}</td>
+        <td class="text-center">{{ order.pickup_location }}</td>
+        <td class="text-center">{{ order.dropoff_location }}</td>
+        <td class="text-center">{{ order.items.length }}</td>
+        <td class="text-center">
+          <span *ngIf="order.status == 'pending'" class="badge bg-warning text-dark p-2 custom-badge">{{ order.status }}</span>
+          <span *ngIf="order.status != 'pending' && order.status !='delivered'" class="badge bg-info text-dark p-2 custom-badge">{{ order.status }}</span>
+          <span *ngIf="order.status == 'delivered'" class="badge bg-success p-2 custom-badge">{{ order.status }}</span>
+        </td>
+        <td>
+          <div class="ms-2 text-center">
+            <button *ngIf="order.status =='pending'" class="btn btn-info" (click)="acceptOrder(order.id)">Accept
+            </button>
+            <button *ngIf="order.status !='pending'" class="btn btn-warning"
+                    [routerLink]="['/order', order.id, 'status']"
+                    [queryParams]="{ status: order.status }">Update Status
+            </button>
+            <button class="btn btn-danger ms-1" (click)="declineOrder(order.id)">Decline</button>
+          </div>
+        </td>
+        `
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

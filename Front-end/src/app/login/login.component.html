@@ -1,0 +1,36 @@
+<div class="login-container  m-auto d-flex justify-content-center align-items-center">
+  <div class="login-card m-auto text-center bg-light h-fitcontent">
+    <h2 class="title fw-bold">Welcome Back</h2>
+    <p class="subtitle">Please sign in to continue</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Valid email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+          placeholder="Enter your password" />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password is required
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+        Sign In
+      </button>
+      <div style="text-align: center;">
+        <div class="footer-links">
+          <a routerLink="/sign-up" class="text-decoration-none"> Don't Have Account ? Sign Up </a>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="error" class="alert alert-danger error-message text-center mt-4">{{ error }}</div>
+  </div>
+</div>

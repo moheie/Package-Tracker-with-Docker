@@ -1,0 +1,129 @@
+
+.navcontainer {
+  background-color: #ffffff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(220, 53, 69, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.navbar-brand:hover {
+  background-color: rgba(220, 53, 69, 1);
+}
+
+.navbar-nav .nav-item .btn {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-item .btn:hover {
+  background-color: rgba(220, 53, 69, 1);
+  color: white;
+}
+
+/* Card and form */
+.custom-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.custom-card {
+  position: relative;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: rgba(220, 53, 69, 0.8);
+  border: none;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+.alert {
+  margin-bottom: 1.5rem;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+/* Badge styles */
+.custom-badge {
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.custom-ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.custom-ul .nav-item {
+  margin: 0.5rem 0;
+}
+
+/* Ensures the background image for container */
+.custom-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+  transform: scale(1.1);
+}
