@@ -2,7 +2,6 @@ package database
 
 import (
 	"Package-Tracker/models"
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"os"
@@ -11,14 +10,15 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	err := godotenv.Load()
-	if err != nil {
-		panic("Failed to load .env file")
-	}
 	dsn := os.Getenv("DATABASE_URL")
-	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if dsn == "" {
+		panic("No database URL provided")
+	} else {
+		println("Database URL: ", dsn)
+	}
+	DB, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		panic("Failed to connect to database")
+		panic("Failed to connect to database" + err.Error() + " \n dsn = " + dsn)
 	}
 
 	DB.AutoMigrate(&models.User{}, &models.Order{}, &models.Item{})
