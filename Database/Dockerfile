@@ -1,4 +1,3 @@
-# Use a lightweight MySQL image
 FROM mysql:8.0
 
 # Set environment variables
