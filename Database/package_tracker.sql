@@ -1,1 +1,0 @@
-CREATE schema package_tracker_1;

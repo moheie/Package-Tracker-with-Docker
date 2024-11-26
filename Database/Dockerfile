@@ -5,9 +5,6 @@ FROM mysql:8.0
 ENV MYSQL_ROOT_PASSWORD=root \
     MYSQL_DATABASE=package_tracker
 
-# Add the database schema to the MySQL initialization folder
-COPY package_tracker.sql /docker-entrypoint-initdb.d/
-
 # Expose the MySQL port
 EXPOSE 3306
 
