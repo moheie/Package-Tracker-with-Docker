@@ -3,6 +3,8 @@ docker network create front
 
 docker network create database
 
+# volume 
+docker volume create MysqlData
 # front image
 docker build -t frontend ./front-end
 
@@ -11,7 +13,7 @@ docker run -d --rm -p 4200:4200 --net front --name frontendContainer frontend
 # database image
 docker build -t database ./database
 
-docker run -d --rm --net database --name databaseContainer database
+docker run -d --rm --net database --name databaseContainer -v MysqlData:/var/lib/mysql database
 
 # backend image
 docker build --build-arg DB_CONTAINER=databaseContainer -t backend ./back-end
