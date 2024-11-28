@@ -42,14 +42,6 @@ docker build --build-arg DB_CONTAINER=databaseContainer -t backend ./back-end
 docker run -d --rm --net database --net front --name backendContainer backend
 ```
 ---
-Nginx Image
-```bash
-docker build -t nginx-proxy ./nginx
-```
-```bash
-docker run -d --rm -p 8080:80 --net front --net database --name nginxContainer nginx-proxy
-```
----
 ps 
 ```bash
 docker ps
