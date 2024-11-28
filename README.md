@@ -39,7 +39,7 @@ Backend Image
 docker build --build-arg DB_CONTAINER=databaseContainer -t backend ./back-end
 ```
 ```bash
-docker run -d --rm --net database --net front --name backendContainer backend
+docker run -d --rm --net database --net front -p 8080:8080 --name backendContainer backend
 ```
 ---
 ps 
