@@ -10,11 +10,12 @@ RUN npm install
 # Copy source code
 COPY . .
 
+# fix permissions
 RUN chmod -R 777 /app
 
 # Expose the Angular dev server's default port
 EXPOSE 4200
 
 # Start the Angular dev server
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
+ENTRYPOINT ["npm", "start"]
 
