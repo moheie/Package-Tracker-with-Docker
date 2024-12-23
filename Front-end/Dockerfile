@@ -1,4 +1,4 @@
-FROM node:18-alpine as build
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
@@ -10,9 +10,6 @@ RUN npm install
 # Copy source code
 COPY . .
 
-FROM node:18-alpine
-
-COPY --from=build /app /app/
 # Expose the Angular dev server's default port
 EXPOSE 4200
 
