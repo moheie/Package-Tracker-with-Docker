@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService{
-  private apiUrl = 'https://backend-ahmed1554-dev.apps.rm2.thpm.p1.openshiftapps.com/';
+  private apiUrl = 'https://backend-ahmed1554-dev.apps.rm2.thpm.p1.openshiftapps.com';
 
   constructor(private http: HttpClient) {}
 
