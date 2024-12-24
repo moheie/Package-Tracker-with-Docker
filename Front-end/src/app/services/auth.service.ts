@@ -6,7 +6,7 @@ import {Observable, tap} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080';  // Define your backend API
+  private apiUrl = 'https://backend-adhamishere-dev.apps.rm3.7wse.p1.openshiftapps.com';  // Define your backend API
 
   constructor(private http: HttpClient) {}
 
