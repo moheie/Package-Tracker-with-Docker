@@ -14,7 +14,7 @@ import (
 func enableCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Allowing specific origins (in this case localhost:4200, where Angular is running)
-		w.Header().Set("Access-Control-Allow-Origin", "https://frontend-ahmed1554-dev.apps.rm2.thpm.p1.openshiftapps.com")
+		w.Header().Set("Access-Control-Allow-Origin", "https://front-moheie-dev.apps.rm2.thpm.p1.openshiftapps.com")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 
