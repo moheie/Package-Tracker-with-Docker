@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService{
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://backend-adhamishere-dev.apps.rm3.7wse.p1.openshiftapps.com';
 
   constructor(private http: HttpClient) {}
 
